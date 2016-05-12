@@ -16,7 +16,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.style %></td>
+        <td><%= item.type %></td>
         <td><%= item.name %></td>
         <td><%= item.information %></td>
         <td><%= item.price %></td>

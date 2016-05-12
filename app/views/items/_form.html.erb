@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.select :style, options_for_select(@styles, :style) %>
   </div>
   <div class="field">
     <%= f.label :name %><br>

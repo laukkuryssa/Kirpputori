@@ -6,9 +6,29 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+<% if not session[:user_id].nil? %>
+  <p><%= User.find(session[:user_id]).username %> signed in</p>
+<% end %>
 <body>
 
+  <div class="navibar">
+   <% if current_user %>
+    <%= link_to 'Kaikki tuotteet', items_path %>
+    <%= link_to 'Uusi tuote', new_item_path %>
+    <%= link_to 'Kirjaudu ulos', signout_path, method: :delete %>
+   <% else %>
+    <%= link_to 'Kaikki tuotteet', items_path %>
+    <%= link_to 'Kirjaudu sisään', signin_path %>
+    <%= link_to 'Luo tili', signup_path %>
+   <% end %>
+  </div>
+
 <%= yield %>
+
+<% if current_user %>
+  <p><%= current_user.username %> signed in</p>
+<% end %>
 
 </body>
 </html>

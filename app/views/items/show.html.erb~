@@ -2,7 +2,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @item.style %>
+  <%= @item.type %>
 </p>
 
 <p>
