@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @users = User.all
     @items = Item.all
+    @comment.item_id = Item.find(params[:id])
   end
 
   # GET /comments/1/edit
@@ -30,7 +31,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.item_id = params[:id]
-    @comment.user_id = logged_user.id
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }

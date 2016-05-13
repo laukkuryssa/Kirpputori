@@ -18,7 +18,7 @@
       <tr>
         <td><%= comment.title %></td>
         <td><%= comment.text %></td>
-        <td><%= Item.find(comment.item_id).title %></td>
+        <td><%= @item %></td>
         <td><%= User.find(comment.user_id).username %></td>
         <td><%= link_to 'Show', comment %></td>
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>

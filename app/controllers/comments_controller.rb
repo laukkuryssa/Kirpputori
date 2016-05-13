@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @users = User.all
     @items = Item.all
+    @item = Item.find(params[:id])
   end
 
   # GET /comments/1/edit
