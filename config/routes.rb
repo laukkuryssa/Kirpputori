@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :users
   resources :items
   get 'signup', to: 'users#new'
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   root 'items#index'
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
+  get 'comments/new', to:'comments#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -41,8 +43,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end

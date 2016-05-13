@@ -20,5 +20,11 @@
   <%= @item.price %>
 </p>
 
+<p>
+ <% @item.comments.each do |c| %>
+   <%= link_to c.name, c %>
+ <% end %>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
