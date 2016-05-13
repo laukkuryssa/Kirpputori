@@ -19,8 +19,6 @@
     <%= f.label :text %><br>
     <%= f.text_area :text %>
   </div>
-  <%= f.select :user_id, options_from_collection_for_select(@users, :id, :to_s, selected: @comment.user_id) %>
-  <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

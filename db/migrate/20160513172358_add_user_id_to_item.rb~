@@ -1,0 +1,4 @@
+class AddUserIdToItem < ActiveRecord::Migration
+  def change
+  end
+end

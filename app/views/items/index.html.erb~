@@ -20,11 +20,13 @@
         <td><%= link_to item.name, item %></td>
         <td><%= item.information %></td>
         <td><%= item.price %></td>
-	
-        <td><%= link_to 'Kommentoi', comment_path(:id => item.id) %></td>
-	
+	<% if not (current_user==nil) %>
+        <td><%= link_to 'Kommentoi', new_comment_path(:item_id => item.id) %></td>
+	<% if (item.user_id == current_user.id) %>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% end %>
+	<% end %>
       </tr>
     <% end %>
   </tbody>

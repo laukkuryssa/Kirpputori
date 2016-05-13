@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @users = User.all
     @items = Item.all
-    @comment.item = Item.find(params[:id])
+    @comment.item = Item.find(params[:item_id])
   end
 
   # GET /comments/1/edit
@@ -40,7 +40,6 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
-byebug
   end
 
   # PATCH/PUT /comments/1
