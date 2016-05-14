@@ -1,4 +1,4 @@
-module ItemsHelper
+module CommentsHelper
 
 def custom_word_wrap(text, max_width=10)
 return nil if text.blank?

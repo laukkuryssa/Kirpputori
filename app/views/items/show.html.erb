@@ -37,10 +37,8 @@
     <% @comments.each do |comment| %>
 	<% if (comment.item_id == @item.id) %>
       <tr>
-	<div class ="div32">
         <td><%= comment.title %></td>
         <td><%= comment.text %></td>
-	</div>
         <td><%= comment.item.name %></td>
         <td><%= User.find(comment.user_id).username %></td>
         <td><%= link_to 'Show', comment %></td>

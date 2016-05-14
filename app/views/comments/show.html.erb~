@@ -7,7 +7,7 @@
 
 <p>
   <strong>Text:</strong>
-  <%= @comment.text.wrap(15, "<br>\n") %>
+  <%= custom_word_wrap(@comment.text, 55) %>
  </p>
 
 <p>

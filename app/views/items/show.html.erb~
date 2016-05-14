@@ -22,7 +22,7 @@
 
 <h2>Kommentit</h2>
 
-<table class="table table-hover">
+<table class="table table-hover" width="50">
   <thead>
     <tr>
       <th>Otsikko</th>
@@ -37,12 +37,10 @@
     <% @comments.each do |comment| %>
 	<% if (comment.item_id == @item.id) %>
       <tr>
-	<div class ="32">
         <td><%= comment.title %></td>
-        <td><%= comment.text %></td>
-	</div>
-        <td><%= comment.item.name %></td>
-        <td><%= User.find(comment.user_id).username %></td>
+        <td width="50%"><%= comment.text %></td>
+        <td width="15%><%= comment.item.name %></td>
+        <td width="10%"><%= User.find(comment.user_id).username %></td>
         <td><%= link_to 'Show', comment %></td>
 	<% if not (current_user==nil) %>
 	<% if (comment.user_id == current_user.id) %>
