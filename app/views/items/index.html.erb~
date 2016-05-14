@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
+<h1>All items</h1>
 
 <table class="table table-hover">
   <thead>
@@ -19,7 +19,7 @@
         <td><%= item.style %></td>
         <td><%= link_to item.name, item %></td>
         <td><%= item.information %></td>
-        <td><%= item.price %></td>
+        <td><%= number_to_currency(@item.price, unit: '€', precision: 2, format: "%u %n") %></td>
 	<% if not (current_user==nil) %>
         <td><%= link_to 'Kommentoi', new_comment_path(:item_id => item.id) %></td>
 	<% if (item.user_id == current_user.id) %>
@@ -31,7 +31,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>
