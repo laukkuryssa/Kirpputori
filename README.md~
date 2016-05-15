@@ -59,7 +59,7 @@ Herokun kanssa tuli pari tuntia ennen deadlineä ongelma, eikä käyttäjän luo
    - Manuaalista testausta
    - Turhien linkkien poistelua vieweistä, tarpeellisten fiksaamista
    - Validoinnit
-   - Taulukoiden kenttien muuttelua
+   - Taulukoiden sarakkeiden leveyksien kontrollointia, joissain kentissä homma hoidettu automaattisella rivinvaihdolla ja joissain validoinneilla.
 
 ![Luokkakaavio](datamalli.png)
 
