@@ -1,0 +1,40 @@
+require 'rails_helper'
+
+describe "User" do
+
+  before :each do
+      visit signup_path
+      fill_in('Username', with:'Matti')
+      fill_in('Password', with:'Matti1')
+      fill_in('Password confirmation', with:'Matti1')
+      click_button('Create User')
+      visit signin_path
+      fill_in('username', with:'Matti')
+      fill_in('password', with:'Matt1')
+      click_button('Log in')
+  end
+
+  describe "who creates new item and comments it and deletes his comment and then removes it" do
+
+    it "can signin with right credentials" do
+      visit new_item_path
+      fill_in('Name', with:'Lada')
+      fill_in('Information', with:'Hyväkuntoinen samara tästä mukaan!')
+      fill_in('Price', with:'-345.62564')
+      click_button('Create Item')
+      expect(page).to have_content 'New Item'
+      expect(page).to have_content 'Price must be greater than 0'
+      fill_in('Price', with:'345.62564')
+      click_button('Create Item')
+      expect(page).to have_content 'Esine luotu!'
+      expect(page).to have_content 'Matti'
+      expect(page).to have_content 'Destroy'
+      expect(page).to have_content 'Hyväkuntoinen samara tästä mukaan!'
+      expect(page).to have_content 'Lada'
+      expect(page).to have_content '€ 345.63'
+    end
+
+  end
+
+
+end
