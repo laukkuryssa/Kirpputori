@@ -1,9 +1,11 @@
 <h1>Sign in</h1>
-
-<p id="notice"><%= notice %></p>
-
+	<br>
 <%= form_tag session_path do %>
   username <%= text_field_tag :username, params[:username] %>
+	<br>
+	<br>
   password <%= password_field_tag :password, params[:password] %>
+	<br>
+	<br>
   <%= submit_tag "Log in" %>
 <% end %>

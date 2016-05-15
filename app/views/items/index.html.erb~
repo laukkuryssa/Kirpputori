@@ -1,10 +1,11 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>All items</h1>
 
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>By user</th>
       <th>Type</th>
       <th>Name</th>
       <th>Information</th>
@@ -16,10 +17,11 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+	<td><%= User.find(item.user_id).username %></td>
         <td><%= item.style %></td>
         <td><%= link_to item.name, item %></td>
         <td><%= item.information %></td>
-        <td><%= number_to_currency(@item.price, unit: '€', precision: 2, format: "%u %n") %></td>
+        <td><%= number_to_currency(item.price, unit: '€', precision: 2, format: "%u %n") %></td>
 	<% if not (current_user==nil) %>
         <td><%= link_to 'Kommentoi', new_comment_path(:item_id => item.id) %></td>
 	<% if (item.user_id == current_user.id) %>

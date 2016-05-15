@@ -18,12 +18,14 @@ class CommentsController < ApplicationController
     @users = User.all
     @items = Item.all
     @comment.item = Item.find(params[:item_id])
+    @item = Item.find(@comment.item_id)
   end
 
   # GET /comments/1/edit
   def edit
     @users = User.all
     @items = Item.all
+    @item = Item.find(@comment.item_id)
   end
 
   # POST /comments
@@ -31,9 +33,10 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    @item = Item.find(@comment.item_id)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @item, notice: 'Kommentin luonti onnistui!.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -45,9 +48,10 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+    @item = Item.find(@comment.item_id)
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @item, notice: 'Kommentti muutettu.' }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -59,9 +63,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    
     @comment.destroy
+    @item = Item.find(@comment.item_id)
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @item, notice: 'Kommentti poistettu.' }
       format.json { head :no_content }
     end
   end

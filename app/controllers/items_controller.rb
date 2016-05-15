@@ -16,12 +16,12 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
-    @styles = ["Ajoneuvo", "Asunto", "Elektroniikka", "Harrastusväline" "Muut", "Sisustus", "Vaate", "Viihde"]
+    @styles = ["Ajoneuvo", "Asunto", "Elektroniikka", "Harrastusväline", "Muut", "Sisustus", "Vaate", "Viihde"]
   end
 
   # GET /items/1/edit
   def edit
-    @styles = ["Ajoneuvo", "Asunto", "Elektroniikka", "Harrastusväline" "Muut", "Sisustus", "Vaate", "Viihde"]
+    @styles = ["Ajoneuvo", "Asunto", "Elektroniikka", "Harrastusväline", "Muut", "Sisustus", "Vaate", "Viihde"]
   end
 
   # POST /items
@@ -31,10 +31,10 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.id
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Esine luotu!' }
         format.json { render :show, status: :created, location: @item }
       else
-	@styles = ["Ajoneuvo", "Asunto", "Elektroniikka", "Harrastusväline" "Muut", "Sisustus", "Vaate", "Viihde"] 
+	@styles = ["Ajoneuvo", "Asunto", "Elektroniikka", "Harrastusväline", "Muut", "Sisustus", "Vaate", "Viihde"] 
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Esine muutettu.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Esine poistettu.' }
       format.json { head :no_content }
     end
   end

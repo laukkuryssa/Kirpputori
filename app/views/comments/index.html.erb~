@@ -16,7 +16,7 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-	<div class="comments">
+	<div class="comment">
         <td><%= comment.title %></td>
         <td><%= comment.text %></td>
 	</div>

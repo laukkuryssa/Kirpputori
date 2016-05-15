@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @comment.title %>
@@ -7,7 +5,7 @@
 
 <p>
   <strong>Text:</strong>
-  <%= custom_word_wrap(@comment.text, 55) %>
+  <%= @comment.text %>
  </p>
 
 <p>

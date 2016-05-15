@@ -1,1 +1,17 @@
 <%# add navigation links to this file %>
+
+<% if not current_user.nil? %>
+<li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <%= current_user.username%> <span class="caret"></span>
+    </a>
+      <ul class="dropdown-menu">
+      <li><%= link_to 'New Item', new_item_path %></li>
+    <li><%= link_to 'Log Out', signout_path, method: :delete %></li>
+    <li><%= link_to 'Destroy user', destroyuser_path, method: :delete %></li>
+    </ul>
+  </li> 
+<% else %>
+    <li><%= link_to 'Log in', signin_path %></li>
+    <li><%= link_to 'Register', signup_path %></li>
+<% end %>

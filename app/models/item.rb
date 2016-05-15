@@ -1,4 +1,7 @@
 class Item < ActiveRecord::Base
-has_many :comments
+
+validates :price, :numericality => { :greater_than => 0 }
+
+has_many :comments, dependent: :destroy
 belongs_to :user
 end
