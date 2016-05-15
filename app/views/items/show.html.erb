@@ -21,12 +21,12 @@
 
 <h4>Comments</h4>
 
-<table class="table table-hover">
+<table class="table table-hover" style="table-layout:fixed;">
   <thead>
     <tr>
       <th>By user</th>
-      <th>Title</th>
-      <th>Message</th>
+      <th width="300">Title</th>
+      <th width="600">Message</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -36,8 +36,10 @@
 	<% if (comment.item_id == @item.id) %>
       <tr>
 	<td><%= User.find(comment.user_id).username %></td>
-        <td><%= comment.title %></td>
-        <td><%= comment.text %></td>
+        <td style="word-wrap:break-word;overflow-wrap:break-word;">
+<div style="word-wrap:break-word;"><%= comment.title %></div></td>
+        <td style="word-wrap:break-word;overflow-wrap:break-word;">
+<div style="word-wrap:break-word;"><%= comment.text %></div></td>
 	<% if not (current_user==nil) %>
 	<% if (comment.user_id == current_user.id) %>
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>

@@ -1,0 +1,45 @@
+require 'rails_helper'
+
+RSpec.describe User, type: :model do
+ it "has the username set correctly" do
+    user = User.new username:"Pekka"
+
+    user.username.should == "Pekka"
+  end
+
+  it "has the username set correctly2" do
+    user = User.new username:"masa"
+    user.username.should == "masa"
+  end
+
+  it "is not saved without a password" do
+    user = User.create username:"matti123"
+    expect(user.valid?).to be(false)
+    expect(User.count).to eq(0)
+  end
+
+  it "is not saved without a correct password" do
+    user = User.create username:"matti234", password:"se", password_confirmation:"se"
+    expect(user.valid?).to be(false)
+    expect(User.count).to eq(0)
+  end
+
+  it "is saved with a proper password" do
+    user = User.create username:"Matti234", password:"Sa1asana", password_confirmation:"Sa1asana"
+    expect(user.valid?).to be(true)
+    expect(User.count).to eq(1)
+  end
+
+  describe "who has signed up" do
+    it "can signup with right credentials" do
+      visit root_path
+      fill_in('username', with:'Pekka')
+      fill_in('password', with:'Foobar1')
+      fill_in('confirm_password', with:'Foobar1')
+      click_button('Register')
+
+      expect(page).to have_content 'Tervetuloa!'
+      expect(page).to have_content 'Pekka'
+    end
+  end
+end

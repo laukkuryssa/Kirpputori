@@ -2,13 +2,13 @@
 
 <h1>All items</h1>
 
-<table class="table table-hover">
+<table class="table table-hover" style="table-layout:fixed;">
   <thead>
     <tr>
       <th>By user</th>
       <th>Type</th>
       <th>Name</th>
-      <th>Information</th>
+      <th width="400">Information</th>
       <th>Price</th>
       <th colspan="2"></th>
     </tr>
@@ -20,11 +20,11 @@
 	<td><%= User.find(item.user_id).username %></td>
         <td><%= item.style %></td>
         <td><%= link_to item.name, item %></td>
-        <td><%= item.information %></td>
+        <td style="word-wrap:break-word;overflow-wrap:break-word;">
+<div style="word-wrap:break-word;"><%= item.information %></div></td>
         <td><%= number_to_currency(item.price, unit: '€', precision: 2, format: "%u %n") %></td>
 	<% if not (current_user==nil) %>
 	<% if (item.user_id == current_user.id) %>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	<% end %>
 	<% end %>

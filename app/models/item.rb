@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
 
 validates :price, :numericality => { :greater_than => 0 }
+validates :name, presence: true, length: { maximum: 20 }
+validates :information, presence: true
 
 has_many :comments, dependent: :destroy
 belongs_to :user
